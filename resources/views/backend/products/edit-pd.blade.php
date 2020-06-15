@@ -67,6 +67,12 @@
                             <input class="form-control" id="" type="text" name="product_name" value="{{$product->__get("product_name")}}"   placeholder="Nhập tiêu đề bài viết....">
                         </div>
                     </div>
+                    <label for="">Mã Sản Phẩm:</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input class="form-control" id="" type="text" name="ma_sp" value="{{$product->__get("ma_sp")}}"  placeholder="Nhập mã sản phẩm....">
+                        </div>
+                    </div>
                     <label for="">Mô tả:</label>
                     <div class="form-group">
                         <div class="form-line">
@@ -88,7 +94,7 @@
                     <label for="">Thành Phần Của Sản Phẩm:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="text" name="ingredient"  value="{{$product->__get("ingredient")}}" placeholder="Nhập tiêu đề bài viết....">
+                            <textarea type="text"  name="ingredient" class="form-control ckeditor" id="demo" placeholder="Nhập Thành Phần Của sản Phẩm .....">{{$product->__get("ingredient")}}</textarea>
                         </div>
                     </div>
                     <label for="">Độ Ưu Tiên Sản Phẩm:</label>

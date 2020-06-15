@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -127,5 +128,13 @@ class AccountController extends Controller
             return redirect()->back();
         }
         return redirect()->route("account")->with("thong_bao","Cấp Quyền Thành Công.");
+    }
+    public function create()
+    {
+        Customer::create([
+           "customer_name" => "Demo Customer",
+            "email" => "customer@gmail.com",
+            "password" =>bcrypt(123456789)
+        ]);
     }
 }

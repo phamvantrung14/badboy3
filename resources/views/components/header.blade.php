@@ -12,10 +12,14 @@
                     <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
                 </ul>
+
                 <ul class="h_search list_style">
-                    <li class="shop_cart"><a href="#"><i class="lnr lnr-cart"></i></a></li>
+                    <li class="shop_cart"><a href="{{route("cart.view")}}">
+                            <i class="lnr lnr-cart"></i>({{count($cart->items)}})
+                        </a></li>
                     <li><a class="popup-with-zoom-anim" href="#test-search"><i class="fa fa-search"></i></a></li>
                 </ul>
+
             </div>
         </div>
     </div>
@@ -35,17 +39,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="dropdown submenu active">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Trang Chủ</a>
-
+                        <li class="dropdown submenu">
+                            <a class="dropdown-toggle"  href="{{route("trang-chu")}}" role="button" aria-haspopup="true" aria-expanded="false">Trang Chủ</a>
                         </li>
-                        <li><a href="cake.html">Giới Thiệu</a></li>
+                        <li class="dropdown submenu"><a href="{{route("trang-chu")}}">Giới Thiệu</a></li>
 {{--                        <li><a href="menu.html">Sản Phẩm</a></li>--}}
                         <li class="dropdown submenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">SẢn Phẩm</a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sản Phẩm</a>
                             <ul class="dropdown-menu">
                                 @foreach($type_pd as $value)
-                                <li><a href="about-us.html">{{$value->name}}</a></li>
+                                <li><a href="{{$value->getTypeProductUrl()}}">{{$value->name}}</a></li>
                                 @endforeach
                             </ul>
                         </li>
@@ -56,12 +59,8 @@
 
                         </li>
                         <li class="dropdown submenu">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Cửa Hàng</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="blog.html">Blog with sidebar</a></li>
-                                <li><a href="blog-2column.html">Blog 2 column</a></li>
-                                <li><a href="single-blog.html">Blog details</a></li>
-                            </ul>
+                            <a class="dropdown-toggle"  href="{{route("store")}}" role="button" aria-haspopup="true" aria-expanded="false">Cửa Hàng</a>
+
                         </li>
 
                         <li><a href="contact.html">Liên Hệ</a></li>

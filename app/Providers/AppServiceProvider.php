@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 use App\Models\Type_products;
+
+use App\Helper\CartHelper;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             $type_pd = Type_products::all();
             $view->with([
                "type_pd"=>$type_pd,
+                "cart" => new CartHelper(),
             ]);
         });
     }

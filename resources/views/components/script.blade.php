@@ -21,3 +21,20 @@
 <script src="{{asset("frontend/vendors/lightbox/simpleLightbox.min.js")}}"></script>
 
 <script src="{{asset("frontend/js/theme.js")}}"></script>
+<script type="text/javascript">
+
+        function addToCart(productId) {
+            $.ajax({
+                url: "{{url("cart/add")}}/" + productId,
+                // method:"POST",
+                    {{--data:{--}}
+                    {{--    qty:1,--}}
+                    {{--    _token:"{{csrf_token()}}"--}}
+                    {{--},--}}
+                success: function () {
+                    alert("Mua sản phẩm thành công..")
+                }
+            })
+        }
+
+</script>

@@ -17,7 +17,7 @@
             <div class="card">
                 <div class="header" style="padding: 5px 20px">
                     <h4>
-                        TRẠNG THÁI
+                        Tìm Kiếm
                     </h4>
                     <ul class="header-dropdown m-r--5">
                         <li class="dropdown">
@@ -31,22 +31,38 @@
                         </li>
                     </ul>
                 </div>
-                <div class="body" style="padding-bottom: 0px">
-                    <div class="row clearfix">
-                        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-                            <form action="{{route("check-status-an")}}">
-                                <input type="hidden" name="index_status" value="1">
-                                <button class="btn bg-red btn-lg btn-block waves-effect" type="submit">Ẩn <span class="badge"></span></button>
-                            </form>
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-                            <form action="{{route("check-status-hien")}}">
-                                <input type="hidden" name="index_status" value="2">
-                                <button class="btn bg-teal btn-lg btn-block waves-effect" type="submit">Hiện <span class="badge"></span></button>
-                            </form>
-                        </div>
+                <div class="body">
+                    <form action="{{route("timkiem")}}" method="POST">
+                        @csrf
+                        @method("POST")
+                        <div class="row clearfix">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <select name="status" id="">
+                                            <option value="1">Ẩn</option>
+                                            <option value="2">Hiện</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        <select name="id_type" id="">
+                                            @foreach($type_pd as $value)
+                                            <option value="{{$value->__get("id")}}">{{$value->__get("name")}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                    </div>
+                                <button type="submit"  class="btn btn-primary btn-lg m-l-15 waves-effect">Tìm Kiếm</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -123,7 +139,8 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {!! $product->links() !!}
+{{--                    {!! $product->links() !!}--}}
+                    {!! $product->render('vendor.pagination.pgiadmin') !!}
                 </div>
             </div>
         </div>

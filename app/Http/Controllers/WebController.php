@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Models\Store;
 use App\Models\Slide;
 use App\Models\Type_products;
 use App\Models\Products;
@@ -13,12 +14,15 @@ class WebController extends Controller
 {
     public function indexFrontEnd()
     {
+
         $products = Products::where("new",1)->where("status",2)->get();
+        $cakeBirthday = Products::where("id_type",6)->where("status",2)->orderBy("new","ASC")->limit(5)->get();
+        $giftBox = Products::where("id_type",10)->where("status",2)->orderBy("new","ASC")->limit(5)->get();
         $type_pd1 = Type_products::orderBy("id","ASC")->limit(4)->get();
         $slide1 = Slide::orderBy("id","ASC")->where("status",2)->get();
         $products1= Products::orderBy("id","ASC")->where("new",1)->where("status",2)->limit(6)->get();
-        $products2= Products::orderBy("id","ASC")->where("new",2)->where("status",2)->limit(6)->get();
-        return view("frontend.index",compact("type_pd1","products","slide1","products1","products2"));
+        $drinks = Products::orderBy("id","ASC")->where("id_type",9)->where("new",1)->where("status",2)->limit(6)->get();
+        return view("frontend.index",compact("type_pd1","products","slide1","products1","drinks","cakeBirthday","giftBox"));
     }
     public function index()
     {
@@ -79,5 +83,26 @@ class WebController extends Controller
         }
         return redirect()->route("login-admin")->with("thong_bao","Đăng Ký Tài Khoản Thành Công..");
 
+    }
+    public function typeProduct(Type_products $type_products)
+    {
+        $type_pd = Type_products::all();
+        $product = $type_products->Products()->where("status",2)->paginate(15);
+        return view("frontend.product",compact("product","type_pd"));
+    }
+
+    public function productDetail(Products $product)
+    {
+//        dd($product);
+        $similar_product = Products::where("id_type",$product->id_type)->where("new",1)->limit(4)->get();
+        $pro_detail = Products::where("slug",$product->slug)->first();
+//        dd($pro_detail);
+        return view("frontend.product_detail",compact("pro_detail","similar_product"));
+    }
+
+    public function listStore()
+    {
+        $store = Store::orderBy("area","ASC")->get();
+        return view("frontend.list-store",compact("store"));
     }
 }

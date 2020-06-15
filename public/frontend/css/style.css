@@ -447,6 +447,7 @@ i:before {
 
 .top_header_area {
   background: #f195b2;
+  /*background: #2A2A29;*/
   position: relative;
   z-index: 3;
 }
@@ -537,7 +538,7 @@ i:before {
 }
 
 .top_header_area .float-right .h_search li.shop_cart a:before {
-  content: "3";
+  /*content: "3";*/
   height: 18px;
   width: 18px;
   font-size: 11px;

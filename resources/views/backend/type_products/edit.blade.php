@@ -17,7 +17,7 @@
         <div class="card">
             <div class="header">
                 <h4>
-                    LOẠI SẢN PHẨM: {{$type_pd->__get("name")}}
+                    LOẠI SẢN PHẨM: {{$type_pd1->__get("name")}}
                 </h4>
                 {{--                                <ul class="header-dropdown m-r--5">--}}
                 {{--                                    <li class="dropdown">--}}
@@ -48,19 +48,19 @@
                 </div>
             @endif
             <div class="body">
-                <form method="post" action="{{url("admin/type_products/update/{$type_pd->__get('id')}")}}" enctype="multipart/form-data">
+                <form method="post" action="{{url("admin/type_products/update/{$type_pd1->__get("id")}")}}" enctype="multipart/form-data">
                     @csrf
                     @method("PUT")
                     <label for="">Tên Loại Sản Phẩm:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="text" name="name" value="{{$type_pd->__get("name")}}"  placeholder="Nhập tên loại sản phẩm">
+                            <input class="form-control" id="" type="text" name="name" value="{{$type_pd1->__get("name")}}"  placeholder="Nhập tên loại sản phẩm">
                         </div>
                     </div>
                     <label for="">Mô Tả:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <textarea type="text"  name="description" class="form-control ckeditor" id="demo" placeholder="Nhập nội dung bài viết .....">{{$type_pd->__get("description")}}</textarea>
+                            <textarea type="text"  name="description" class="form-control ckeditor" id="demo" placeholder="Nhập nội dung bài viết .....">{{$type_pd1->__get("description")}}</textarea>
                         </div>
                     </div>
                     <label for="">Chon Ảnh:</label>

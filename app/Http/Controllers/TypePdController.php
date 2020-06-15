@@ -49,11 +49,18 @@ class TypePdController extends Controller
                 $file->move(public_path("upload/type-pd"),$fileImage);
                 $image = "upload/type-pd/".$fileImage;
             }
-            Type_products::create([
+            $slug = \Illuminate\Support\Str::slug($request->get("name"));
+
+            $typePd=Type_products::create([
                 "name"=>$request->get("name"),
                 "description"=>$request->get("description"),
                 "image"=>$image,
             ]);
+            $id=$typePd->id;
+            $slug1 = $slug.$id;
+            $type_Pd = Type_products::findOrFail($id);
+            $type_Pd->slug = $slug1;
+            $type_Pd->save();
         }catch (\Exception $exception)
         {
             return redirect()->back()->with("thong_bao","Thêm loại sản phẩm không thành công..");
@@ -63,8 +70,9 @@ class TypePdController extends Controller
 
     public function edit($id)
     {
-        $type_pd= Type_products::findOrFail($id);
-        return view("backend.type_products.edit",compact("type_pd"));
+//        dd($id);
+        $type_pd1= Type_products::findOrFail($id);
+        return view("backend.type_products.edit",compact("type_pd1"));
     }
 
     public function update($id,Request $request)
@@ -106,9 +114,13 @@ class TypePdController extends Controller
             }else{
                 $image = $type_pd->__get("image");
             }
+
             $type_pd->name = $request->get("name");
             $type_pd->description = $request->get("description");
             $type_pd->image = $image;
+            $slug = \Illuminate\Support\Str::slug($request->get("name"));
+//            dd($slug);
+            $type_pd->slug = $slug.$id;
             $type_pd->save();
         }catch (\Exception $exception)
         {

@@ -33,6 +33,13 @@
             <form id="sign_in" method="POST" action="{{route("post-login-ad")}}" novalidate="novalidate">
                 @csrf
                 <div class="msg">Sign in to start your session</div>
+                @if(session('thong_bao'))
+                    <div class="header">
+                        <div class="alert alert-success">
+                            {{session('thong_bao')}}
+                        </div>
+                    </div>
+                @endif
                 @if(session("error"))
                     <span class="error invalid-feedback" style="color: red">{{session("error")}}</span>
 {{--                    <div class="header">--}}
@@ -71,7 +78,7 @@
                         <a href="{{route("register")}}">Register Now!</a>
                     </div>
                     <div class="col-xs-6 align-right">
-                        <a href="forgot-password.html">Forgot Password?</a>
+                        <a href="{{route("form-reset-pas")}}">Forgot Password?</a>
                     </div>
                 </div>
             </form>

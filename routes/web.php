@@ -14,13 +14,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 //Auth::routes();
-Route::get("/login","WebController@loginAdmin")->name("login-admin");
-Route::post("/postLogin","WebController@postLoginAdmin")->name("post-login-ad");
-Route::get("/logout","WebController@logoutAdmin")->name("logout-ad");
+
+Route::get("/admin/login","WebController@loginAdmin")->name("login-admin");
+Route::post("/admin/postLogin","WebController@postLoginAdmin")->name("post-login-ad");
+Route::get("/admin/logout","WebController@logoutAdmin")->name("logout-ad");
+
+Route::get("/admin/forgot-password","Auth\ForgotPasswordController@getFromRessetPas")->name("form-reset-pas");
+Route::post("/admin/forgot-password","Auth\ForgotPasswordController@sendCodeRessetPass");
+Route::get("/admin/password/reset","Auth\ForgotPasswordController@resetPassword")->name('link-resetpas');
+Route::post("/admin/password/reset","Auth\ForgotPasswordController@saveResetPassword")->name("save-password");
 
 
-Route::get("/register","WebController@register")->name("register");
-Route::post("/save-register","WebController@registerSave")->name("register-save");
+Route::get("/admin/register","WebController@register")->name("register");
+Route::post("/admin/save-register","WebController@registerSave")->name("register-save");
 
 include_once ("frontend.php");
 Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
@@ -109,6 +115,9 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
 
         Route::get('/check/{id}','ProductController@check')->name("check-pd");
         Route::get('/check/delete-img/{id}','ProductController@deleteImg');
+
+        //tim kiếm
+        Route::post('/timkiem',"ProductController@timkiem")->name("timkiem");
     });
 
 });

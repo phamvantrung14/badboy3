@@ -11,9 +11,21 @@ use File;
 
 class ProductController extends Controller
 {
+    public function timkiem(Request $request)
+    {
+//        dd($request->all());
+        $status = $request->status;
+//        $name = $request->product_name;
+        $type_pd = $request->id_type;
+        $product = Products::where("status",$status)->where("id_type",$type_pd)->paginate(15);
+        $type_pd = Type_products::all();
+        return view("backend.products.products",compact("product"));
+
+    }
     public function index()
     {
         $product = Products::paginate(15);
+        $type_pd = Type_products::all();
         return view("backend.products.products",compact("product"));
     }
     public function new()
@@ -29,29 +41,31 @@ class ProductController extends Controller
 //dd($request->all());
         $request->validate([
             "product_name"=>"required|min:5|string",
+            "ma_sp"=>"required",
+            "product_description"=>"required",
+            "ingredient"=>"required",
             "product_avatar"=>"required",
             "price"=>"required|numeric|min:0",
-            "sale_price"=>"numeric",
 
         ],
         [
             "product_name.required"=>"Tên sản phẩm không được để trống...",
             "product_name.min"=>"Tên sản phẩm phải từ 5 ký tự trở lên...",
             "product_name.string"=>"Tên sản phẩm phải là một chuỗi...",
+            "product_description.required"=>"Mô tả sản phẩm không được để trống",
+            "ingredient.required"=>"Thành phần không được để trống..",
+            "ma_sp.required"=>"Ma sản phẩm không được để trống",
             "product_avatar.required"=>"Ảnh sản phẩm không được để trống...",
             "price.required"=>"Giá không được để trống..",
             "price.numeric"=>"Giá phải là kiểu số nguyên..",
             "price.min"=>"Giá không được để là 0",
-            "sale_price.numeric"=>"Giá khuyến mại phải là kiểu số nguyên...",
+
 
         ]);
         if ($request->__get("sale_price")>$request->__get("price")){
             return redirect()->back()->with("thong_bao","Giá khuyến mại phải nhỏ hơn giá sản phẩm");
         }
         $image = "";
-
-
-
         try {
             if ($request->hasFile("product_avatar"))
             {
@@ -66,10 +80,12 @@ class ProductController extends Controller
                 $file->move(public_path("upload/product"),$fileImage);
                 $image = "upload/product/".$fileImage;
             }
+            $slug = \Illuminate\Support\Str::slug($request->get("product_name"));
             $product=Products::create([
                 "product_name"=>$request->get("product_name"),
                 "product_description"=>$request->get("product_description"),
                 "price"=>$request->get("price"),
+                "ma_sp"=>$request->get("ma_sp"),
                 "sale_price"=>$request->get("sale_price"),
                 "new"=>$request->get("new"),
                 "status"=>$request->get("status"),
@@ -77,25 +93,30 @@ class ProductController extends Controller
                 "id_type"=>$request->get("id_type"),
                 "product_avatar"=>$image
             ]);
+            $id=$product->id;
+            $slug1 = $slug.$id;
+            $pd = Products::findOrFail($id);
+            $pd->slug = $slug1;
+            $pd->save();
 
-                if ($request->hasFile("name_image")) {
-                    foreach ($request->name_image as $value) {
-                        $extName2 = $value->getClientOriginalExtension();
-                        if ($extName2 != "png" && $extName2 != "jpg" && $extName2 != "jpeg" && $extName2 != "gif") {
-                            return redirect()->back()->with("thong_bao", "File ảnh sản phẩm không hợp lệ..");
-                        }
-                        $imageName = $value->getClientOriginalName();
-                        $filePdImg = $random . "_" . $imageName;
-                        $value->move(public_path("upload/product"), $filePdImg);
-                        $link = "upload/product/" . $filePdImg;
-                        Product_image::create([
-                            "name_image" => $link,
-                            "id_product" => $product->__get("id"),
-                            "status" => $request->get("status")
-                        ]);
-
+            if ($request->hasFile("name_image")) {
+                foreach ($request->name_image as $value) {
+                    $extName2 = $value->getClientOriginalExtension();
+                    if ($extName2 != "png" && $extName2 != "jpg" && $extName2 != "jpeg" && $extName2 != "gif") {
+                        return redirect()->back()->with("thong_bao", "File ảnh sản phẩm không hợp lệ..");
                     }
+                    $imageName = $value->getClientOriginalName();
+                    $filePdImg = $random . "_" . $imageName;
+                    $value->move(public_path("upload/product"), $filePdImg);
+                    $link = "upload/product/" . $filePdImg;
+                    Product_image::create([
+                        "name_image" => $link,
+                        "id_product" => $product->__get("id"),
+                        "status" => $request->get("status")
+                    ]);
+
                 }
+            }
 
         }catch (\Exception $exception)
         {
@@ -116,22 +137,22 @@ class ProductController extends Controller
         $pro = Products::findOrFail($id);
 
         $request->validate([
-            "product_name"=>"required|min:5|string",
-            "product_description"=>"required|min:10",
+            "product_name"=>"required|min:2|string",
+//            "product_description"=>"required|min:10",
             "price"=>"required|numeric|min:0",
-            "sale_price"=>"numeric",
+//            "sale_price"=>"numeric",
 
         ],
             [
                 "product_name.required"=>"Tên sản phẩm không được để trống...",
                 "product_name.min"=>"Tên sản phẩm phải từ 5 ký tự trở lên...",
                 "product_name.string"=>"Tên sản phẩm phải là một chuỗi...",
-                "product_description.required"=>"Mô tả sản phẩm không được để trống...",
-                "product_description.min"=>"Mô tả sản phẩm phải từ 10 ký tự trở lên...",
+//                "product_description.required"=>"Mô tả sản phẩm không được để trống...",
+//                "product_description.min"=>"Mô tả sản phẩm phải từ 10 ký tự trở lên...",
                 "price.required"=>"Giá không được để trống..",
                 "price.numeric"=>"Giá phải là kiểu số nguyên..",
                 "price.min"=>"Giá không được để là 0",
-                "sale_price.numeric"=>"Giá khuyến mại phải là kiểu số nguyên...",
+//                "sale_price.numeric"=>"Giá khuyến mại phải là kiểu số nguyên...",
 
             ]);
         $random = Str::random(4);
@@ -159,6 +180,7 @@ class ProductController extends Controller
             }
 
                 $pro->product_name=$request->get("product_name");
+                $pro->ma_sp = $request->get("ma_sp");
                 $pro->product_description=$request->get("product_description");
                 $pro->price=$request->get("price");
                 $pro->sale_price=$request->get("sale_price");
@@ -167,6 +189,9 @@ class ProductController extends Controller
                 $pro->ingredient=$request->get("ingredient");
                 $pro->id_type=$request->get("id_type");
                 $pro->product_avatar=$image;
+            $slug = \Illuminate\Support\Str::slug($request->get("product_name"));
+//            dd($slug);
+            $pro->slug = $slug.$id;
                 $pro->save();
 
 

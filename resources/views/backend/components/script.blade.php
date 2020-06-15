@@ -42,3 +42,17 @@
 <!-- Demo Js -->
 <script src="{{asset('backend/js/demo.js')}}"></script>
 <script src="{{asset('backend/js/ckeditor/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript">
+    function timkiem() {
+        $.ajax({
+            url:"{{route("timkiem")}}",
+            method:"POST",
+            data:{
+
+            },
+            success: function () {
+                alert("tim kiem thanh cong...")
+            }
+        })
+    }
+</script>

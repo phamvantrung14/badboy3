@@ -63,31 +63,37 @@
                     <label for="">Tên Sản Phẩm:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="text" name="product_name"   placeholder="Nhập tiêu đề bài viết....">
+                            <input class="form-control" id="" type="text" name="product_name"   placeholder="Nhập tên sản phẩm....">
+                        </div>
+                    </div>
+                    <label for="">Mã Sản Phẩm:</label>
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input class="form-control" id="" type="text" name="ma_sp"   placeholder="Nhập mã sản phẩm....">
                         </div>
                     </div>
                     <label for="">Mô tả:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <textarea type="text"  name="product_description" class="form-control ckeditor" id="demo" placeholder="Nhập nội dung bài viết ....."></textarea>
+                            <textarea type="text"  name="product_description" class="form-control ckeditor" id="demo" placeholder="Nhập mô tả sản phẩm .....">Mô tả</textarea>
                         </div>
                     </div>
                     <label for="">Giá Sản Phẩm:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="number" name="price"   placeholder="Nhập tiêu đề bài viết....">
+                            <input class="form-control" id="" type="number" name="price"   placeholder="Nhập giá sản phẩm....">
                         </div>
                     </div>
                     <label for="">Giá Khuyến Mại(nếu có):</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="number" name="sale_price"   placeholder="Nhập tiêu đề bài viết....">
+                            <input class="form-control" id="" type="number" name="sale_price" value="0"  placeholder="Nhập giá khuyến mại...">
                         </div>
                     </div>
                     <label for="">Thành Phần Của Sản Phẩm:</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <textarea type="text"  name="ingredient" class="form-control ckeditor" id="demo" placeholder="Nhập Thành Phần Của sản Phẩm ....."></textarea>
+                            <textarea type="text"  name="ingredient" class="form-control ckeditor" id="demo" placeholder="Nhập Thành Phần Của sản Phẩm .....">Thành phần</textarea>
 
                         </div>
                     </div>
