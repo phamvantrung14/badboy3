@@ -29,8 +29,8 @@ Route::get("/admin/register","WebController@register")->name("register");
 Route::post("/admin/save-register","WebController@registerSave")->name("register-save");
 
 include_once ("frontend.php");
-//Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
-Route::group(["prefix"=>"admin"],function(){
+Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
+//Route::group(["prefix"=>"admin"],function(){
     Route::get('/','WebController@index')->name("admin");
 
     //hệ thống cửa hàng
