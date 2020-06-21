@@ -59,9 +59,9 @@ class AppServiceProvider extends ServiceProvider
             $month = $dt->month;
 //            dd($month);
             //doanh thu theo thang
-            $revenueOdersMonth = Orders::where("status",3)->whereMonth("updated_at",date('m'))
-                ->select(\DB::raw('sum(total_price) as totalMoney'),\DB::raw('DATE(updated_at) day'))->groupBy('day')
-            ->get()->toArray();
+//            $revenueOdersMonth = Orders::where("status",3)->whereMonth("updated_at",date('m'))
+//                ->select(\DB::raw('sum(total_price) as totalMoney'),\DB::raw('DATE(updated_at) day'))->groupBy('day')
+//            ->get()->toArray();
 
             //doanh thu theo trang thái xác nhận đơn hàng
 //            $revenueOdersMonthDefault = Orders::where("status",1)->whereMonth("updated_at",date('m'))
