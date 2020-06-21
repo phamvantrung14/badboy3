@@ -79,10 +79,10 @@
                             </li>
                         </ul>
                     </div>
-                    <figure class="highcharts-figure">
-                    <div id="container"></div>
+{{--                    <figure class="highcharts-figure">--}}
+{{--                    <div id="container"></div>--}}
 
-                    </figure>
+{{--                    </figure>--}}
                 </div>
             </div>
             <!-- #END# Task Info -->
@@ -93,10 +93,10 @@
                         <h2>Trang Thai Don Hang</h2>
                     </div>
 {{--                    <div class="body">--}}
-                        <figure class="highcharts-figure">
-                            <div id="container3"></div>
+{{--                        <figure class="highcharts-figure">--}}
+{{--                            <div id="container3"></div>--}}
 
-                        </figure>
+{{--                        </figure>--}}
 {{--                    </div>--}}
                 </div>
             </div>
@@ -167,9 +167,9 @@
                     <div class="header">
                         <h2>Thống Kê Doanh Thu Hàng Ngày Trong Tháng {{$month}}</h2>
                     </div>
-                    <figure class="highcharts-figure">
-                        <div id="container2" data-list-day="{{$listDay}}" data-money="{{$arrOrders}}" data-money-default="{{$arrOrdersDefault}}"></div>
-                    </figure>
+{{--                    <figure class="highcharts-figure">--}}
+{{--                        <div id="container2" data-list-day="{{$listDay}}" data-money="{{$arrOrders}}" data-money-default="{{$arrOrdersDefault}}"></div>--}}
+{{--                    </figure>--}}
                 </div>
             </div>
         </div>
