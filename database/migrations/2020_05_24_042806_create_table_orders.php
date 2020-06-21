@@ -20,7 +20,7 @@ class CreateTableOrders extends Migration
             $table->string('email');
             $table->string('address')->nullable();
             $table->integer('phone_number');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->float('total_price');
             $table->tinyInteger('payment')->default('1')->index();//1 chuyen khoan 2. tien mat
             $table->tinyInteger('status')->default('1')->index();//1 dang cho -2 dang giao -3 hoan thanh -4 huy don

@@ -30,6 +30,11 @@
 
                         </tr>
                         <tr>
+                            <th>Mã Sản Phẩm: </th>
+                            <td>{{$product->__get("ma_sp")}}</td>
+
+                        </tr>
+                        <tr>
                             <th>Giá Bán:</th>
                             <td>{{number_format($product->__get("price"))}} VNĐ</td>
 

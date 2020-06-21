@@ -14,7 +14,7 @@ class UpdateTableOrder extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
-            $table->unsignedBigInteger('customer_id')->default(0)->after("gender");
+            $table->unsignedBigInteger('customer_id')->nullable()->default(0)->after("gender");
             $table->foreign('customer_id')->references('id')->on('customer');
         });
     }
