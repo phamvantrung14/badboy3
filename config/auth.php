@@ -42,7 +42,7 @@ return [
         ],
         'cus' => [
             'driver' => 'session',
-            'provider' => 'customer',
+            'provider' => 'customers',
         ],
         'api' => [
             'driver' => 'token',
@@ -73,7 +73,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-        'customer' => [
+        'customers' => [
             'driver' => 'eloquent',
             'model' => App\Models\Customer::class,
         ],
@@ -106,12 +106,7 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-        'customer' => [
-            'provider' => 'customer',
-            'table' => 'password_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
+
     ],
 
     /*

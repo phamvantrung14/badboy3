@@ -19,18 +19,6 @@
                 <h4>
                     THÊM SLIDE
                 </h4>
-                {{--                <ul class="header-dropdown m-r--5">--}}
-                {{--                    <li class="dropdown">--}}
-                {{--                        <a class="dropdown-toggle" role="button" aria-expanded="true" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">--}}
-                {{--                            <i class="material-icons">more_vert</i>--}}
-                {{--                        </a>--}}
-                {{--                        <ul class="dropdown-menu pull-right">--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>--}}
-                {{--                        </ul>--}}
-                {{--                    </li>--}}
-                {{--                </ul>--}}
             </div>
             @if(count($errors)>0)
                 <div class="alert alert-danger">
@@ -46,12 +34,12 @@
                     @method("POST")
                     <label for="">Trạng Thái</label>
                     <div class="form-group">
-                            <div class="demo-radio-button">
-                                <input name="status" value="1" id="radio_1" type="radio" checked="">
-                                <label for="radio_1">Ẩn</label>
-                                <input name="status" value="2" id="radio_2" type="radio">
-                                <label for="radio_2">Hiện</label>
-                            </div>
+                        <div class="demo-radio-button">
+                            <input name="status" value="1" id="radio_1" type="radio" checked="">
+                            <label for="radio_1">Ẩn</label>
+                            <input name="status" value="2" id="radio_2" type="radio">
+                            <label for="radio_2">Hiện</label>
+                        </div>
                     </div>
                     <label for="">Tiêu Đề</label>
                     <div class="form-group">
@@ -59,10 +47,20 @@
                             <input class="form-control" id="" type="text" name="slide_title"   placeholder="Nhập tên cửa hàng">
                         </div>
                     </div>
+                    <label for="">Loại Slide</label>
+                    <div class="form-group">
+                        <select name="type_slide" id="">
+                            <option value="0">Mặc Định</option>
+                            <option value="1">Trang Chủ</option>
+                            <option value="2">Sản Phẩm</option>
+                            <option value="3">Tin Tức</option>
+                            <option value="4">Cửa Hàng</option>
+                        </select>
+                    </div>
                     <label for="">Chon ảnh</label>
                     <div class="form-group">
                         <div class="form-line">
-                            <input class="form-control" id="" type="file" name="image"   >
+                            <input class="form-control" id="" type="file" name="image">
                         </div>
                     </div>
                     <br>

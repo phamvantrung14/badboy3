@@ -19,6 +19,16 @@ class Customer extends Authenticatable
     protected $fillable = [
         'customer_name', 'email', 'password','address','image'
     ];
+    public function getImage()
+    {
+        if (is_null($this->__get("image")))
+        {
+
+            return asset("upload/demoppp.jpg");
+        }else{
+            return asset($this->__get("image"));
+        }
+    }
     public const ADMIN_ROLE = 1;
     public const USER_ROLE =0;
 

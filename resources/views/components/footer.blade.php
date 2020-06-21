@@ -1,25 +1,3 @@
-{{--<section class="newsletter_area">--}}
-{{--    <div class="container">--}}
-{{--        <div class="row newsletter_inner">--}}
-{{--            <div class="col-lg-6">--}}
-{{--                <div class="news_left_text">--}}
-{{--                    <h4>Join our Newsletter list to get all the latest offers, discounts and other benefits</h4>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="col-lg-6">--}}
-{{--                <div class="newsletter_form">--}}
-{{--                    <div class="input-group">--}}
-{{--                        <input type="text" class="form-control" placeholder="Enter your email address">--}}
-{{--                        <div class="input-group-append">--}}
-{{--                            <button class="btn btn-outline-secondary" type="button">Subscribe Now</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-{{--</section>--}}
-
 
 <footer class="footer_area">
     <div class="footer_widgets">
@@ -27,8 +5,8 @@
             <div class="row footer_wd_inner">
                 <div class="col-lg-3 col-6">
                     <aside class="f_widget f_about_widget">
-                        <img src="{{asset("frontend/img/footer-logo.png")}}" alt="">
-                        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui bland itiis praesentium voluptatum deleniti atque corrupti.</p>
+                        <img src="{{asset("frontend/img/logo_footer1.png")}}" alt="">
+                        <p>Hệ thống nhiều loại bánh ngọt và đồ ăn phục vụ mọi lúc..</p>
                         <ul class="nav">
                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -43,33 +21,32 @@
                             <h3>Quick links</h3>
                         </div>
                         <ul class="list_style">
-                            <li><a href="#">Your Account</a></li>
-                            <li><a href="#">View Order</a></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms & Conditionis</a></li>
+                            <li><a href="#">Đơn Hàng</a></li>
+                            <li><a href="#">Sản Phẩm</a></li>
+{{--                            <li><a href="#">Terms & Conditionis</a></li>/--}}
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-3 col-6">
                     <aside class="f_widget f_link_widget">
                         <div class="f_title">
-                            <h3>Work Times</h3>
+                            <h3>Thời Gian</h3>
                         </div>
                         <ul class="list_style">
-                            <li><a href="#">Mon. :  Fri.: 8 am - 8 pm</a></li>
-                            <li><a href="#">Sat. : 9am - 4pm</a></li>
-                            <li><a href="#">Sun. : Closed</a></li>
+                            <li><a href="#">T2. :  T6.: 8 am - 8 pm</a></li>
+                            <li><a href="#">T7. : 9am - 4pm</a></li>
+                            <li><a href="#">CN. : Closed</a></li>
                         </ul>
                     </aside>
                 </div>
                 <div class="col-lg-3 col-6">
                     <aside class="f_widget f_contact_widget">
                         <div class="f_title">
-                            <h3>Contact Info</h3>
+                            <h3>Liên Hệ</h3>
                         </div>
                         <h4>(1800) 574 9687</h4>
-                        <p>Justshiop Store <br />256, baker Street,, New Youk, 5245</p>
-                        <h5>cakebakery@contact.co.in</h5>
+                        <p>David's Burges<br />8, Tôn Thất Thuyết,,Hà Nội, 5245</p>
+                        <h5>davidsbugres@contact.co.in</h5>
                     </aside>
                 </div>
             </div>
@@ -79,11 +56,11 @@
         <div class="container">
             <div class="copyright_inner">
                 <div class="float-left">
-                    <h5>© Copyright  cakebakery WordPress WooCommerce Theme. All right reserved.</h5>
+                    <h5>© trungpvth1807021@fpt.edu.vn</h5>
                 </div>
-                <div class="float-right">
-                    <a href="#">Purchase Now</a>
-                </div>
+{{--                <div class="float-right">--}}
+{{--                    <a href="#">Purchase Now</a>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

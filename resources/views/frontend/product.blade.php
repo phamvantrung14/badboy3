@@ -4,10 +4,10 @@
     <section class="banner_area">
         <div class="container">
             <div class="banner_text">
-                <h3>Shop</h3>
+                <h3>Sản Phẩm</h3>
                 <ul>
-                    <li><a href="{{route("trang-chu")}}">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="{{route("trang-chu")}}">Trang Chủ</a></li>
+                    <li><a href="">Sản Phẩm</a></li>
                 </ul>
             </div>
         </div>
@@ -30,7 +30,7 @@
                                     <a href="{{url("/product-detail/{$value->slug}")}}"><h3>{{$value->product_name}}</h3></a>
                                     <p>MSP: {{$value->ma_sp}}</p>
                                     <p>Giá: {{$value->getPrice()}}</p>
-                                    <a class="pest_btn" href="#">Add to cart</a>
+                                    <a class="pest_btn" onclick="addToCart({{$value->__get("id")}});" href="javascript:void(0);">Add to cart</a>
                                 </div>
                             </div>
                         </div>
@@ -47,10 +47,33 @@
                     <div class="product_left_sidebar">
                         <aside class="left_sidebar search_widget">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter Search Keywords">
-                                <div class="input-group-append">
-                                    <button class="btn" type="button"><i class="icon icon-Search"></i></button>
-                                </div>
+{{--                                <form action="{{url("/search-pd")}}" method="get">--}}
+{{--                                <input type="text" id="keysearch" name="stk" class="form-control" placeholder="Enter Search Keywords">--}}
+{{--                                    @csrf--}}
+{{--                                    @method("GET")--}}
+{{--                                <div class="input-group-append">--}}
+{{--                                    <button class="btn"  type="submit">--}}
+{{--                                        <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>--}}
+{{--                                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>--}}
+{{--                                        </svg>--}}
+{{--                                        <i class="icon icon-Search"></i>--}}
+{{--                                    </button>--}}
+{{--                                </div>--}}
+{{--                                </form>--}}
+                                <input type="hidden" class="" id="token" name="_token" value="{{csrf_token()}}">
+
+                                 <input type="text" id="keysearch" name="stk" class="form-control" placeholder="Nhập Tên Sản Phẩm">
+                                    <div class="input-group-append">
+                                        <button class="btn"  type="button" onclick="serchProducts();">
+                                            <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                            </svg>
+                                            <i class="icon icon-Search"></i>
+                                        </button>
+                                    </div>
+
                             </div>
                         </aside>
                         <aside class="left_sidebar p_catgories_widget">
@@ -63,89 +86,11 @@
                                 @endforeach
                             </ul>
                         </aside>
-                        <aside class="left_sidebar p_price_widget">
-                            <div class="p_w_title">
-                                <h3>Filter By Price</h3>
-                            </div>
-                            <div class="filter_price">
-                                <div class="ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content" id="slider-range"><div class="ui-slider-range ui-corner-all ui-widget-header" style="left: 2%; width: 48%;"></div><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 2%;"></span><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="left: 50%;"></span></div>
-                                <label for="amount">Price range:</label>
-                                <input id="amount" type="text" readonly="">
-                                <a href="#">Filter</a>
-                            </div>
-                        </aside>
-                        <aside class="left_sidebar p_sale_widget">
-                            <div class="p_w_title">
-                                <h3>Top Sale Products</h3>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img alt="" src="img/product/sale-product/s-product-1.jpg">
-                                </div>
-                                <div class="media-body">
-                                    <a href="#"><h4>Brown Cake</h4></a>
-                                    <ul class="list_style">
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    </ul>
-                                    <h5>$29</h5>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img alt="" src="img/product/sale-product/s-product-2.jpg">
-                                </div>
-                                <div class="media-body">
-                                    <a href="#"><h4>Brown Cake</h4></a>
-                                    <ul class="list_style">
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    </ul>
-                                    <h5>$29</h5>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img alt="" src="img/product/sale-product/s-product-3.jpg">
-                                </div>
-                                <div class="media-body">
-                                    <a href="#"><h4>Brown Cake</h4></a>
-                                    <ul class="list_style">
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    </ul>
-                                    <h5>$29</h5>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img alt="" src="img/product/sale-product/s-product-4.jpg">
-                                </div>
-                                <div class="media-body">
-                                    <a href="#"><h4>Brown Cake</h4></a>
-                                    <ul class="list_style">
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-star-o"></i></a></li>
-                                    </ul>
-                                    <h5>$29</h5>
-                                </div>
-                            </div>
-                        </aside>
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 @endsection
+

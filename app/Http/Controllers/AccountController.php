@@ -137,4 +137,10 @@ class AccountController extends Controller
             "password" =>bcrypt(123456789)
         ]);
     }
+
+    public function indexCus()
+    {
+        $customer = Customer::all();
+        return view("backend.account.customer",compact("customer"));
+    }
 }

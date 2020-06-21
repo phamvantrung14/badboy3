@@ -46,10 +46,17 @@
                                 </select>
 
                             </div>
-                            <div class="form-group col-md-12">
-                                <label for="company">Email *</label>
-                                <input type="email" class="form-control" style="color: #0b0b0b" id="company" name="email" placeholder="Nhập email của bạn">
-                            </div>
+                            @if(Auth::guard('cus')->check())
+                                <div class="form-group col-md-12">
+                                    <label for="company">Email *</label>
+                                    <input type="email" class="form-control" style="color: #0b0b0b" readonly value="{{Auth::guard('cus')->user()->email}}" id="company" name="email" placeholder="Nhập email của bạn">
+                                </div>
+                            @else
+                                <div class="form-group col-md-12">
+                                    <label for="company">Email *</label>
+                                    <input type="email" class="form-control" style="color: #0b0b0b" id="company" name="email" value="" placeholder="Nhập email của bạn">
+                                </div>
+                            @endif
                             <div class="form-group col-md-12">
                                 <label for="company">Số Điện Thoại *</label>
                                 <input type="text" class="form-control" style="color: #0b0b0b" id="company" name="phone_number" placeholder="Số điện thoại của bạn">

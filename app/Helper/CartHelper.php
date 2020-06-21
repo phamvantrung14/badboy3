@@ -30,9 +30,7 @@ class CartHelper
         }else{
             $this->items[$product->id] = $item;
         }
-//        $this->items[$product->id] = $item;
         session(['cart'=> $this->items]);
-//        dd($this->items);
     }
     public function remove($id)
     {

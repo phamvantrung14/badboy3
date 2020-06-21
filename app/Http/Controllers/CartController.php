@@ -21,7 +21,6 @@ class CartController extends Controller
         $id = $products->__get("id");
         $product = Products::find($id);
         $cart->add($product);
-//        dd(session('cart'));
         return redirect()->back();
     }
     public function remove(CartHelper $cart,$id)

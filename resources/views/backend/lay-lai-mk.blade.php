@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
 
-    <<!-- Bootstrap Core Css -->
+    <!-- Bootstrap Core Css -->
     <link href="{{asset("backend/plugins/bootstrap/css/bootstrap.css")}}" rel="stylesheet">
 
     <!-- Waves Effect Css -->
@@ -28,16 +28,16 @@
 <body class="fp-page">
 <div class="fp-box">
     <div class="logo">
-        <a href="javascript:void(0);">Admin<b>BSB</b></a>
-        <small>Admin BootStrap Based - Material Design</small>
+        <a href="javascript:void(0);">Admin<b></b></a>
+        <small>Admin Davi's Bugers - Trungpv398 Design</small>
     </div>
     <div class="card">
         <div class="body">
             <form id="forgot_password" method="POST">
                 @csrf
                 <div class="msg">
-                    Enter your email address that you used to register. We'll send you an email with your username and a
-                    link to reset your password.
+                    Nhập địa chỉ email của bạn mà bạn đã sử dụng để đăng ký. Chúng tôi sẽ gửi cho bạn một email với
+                    tên người dùng của bạn và một liên kết để đặt lại mật khẩu của bạn.
                 </div>
                 <div class="input-group">
                         <span class="input-group-addon">
@@ -48,10 +48,10 @@
                     </div>
                 </div>
 
-                <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">RESET MY PASSWORD</button>
+                <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">LẤY LẠI MẬT KHẨU</button>
 
                 <div class="row m-t-20 m-b--5 align-center">
-                    <a href="sign-in.html">Sign In!</a>
+                    <a href="{{route("login-admin")}}">Đăng Nhập!</a>
                 </div>
             </form>
         </div>

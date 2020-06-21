@@ -96,7 +96,9 @@
                         @foreach($slide as $value)
                             <tr >
                                 <th scope="row">{{$loop->index+1}}</th>
-                                <td>{{$value->__get('slide_title')}}</td>
+                                <td>{{$value->__get('slide_title')}}<br>
+                                    ({{$value->getTypeSlide()}})
+                                </td>
                                 <td>
                                     <img  src="{{asset('upload/slide')}}/{{$value->__get('image')}}" width="80px" alt="">
                                 </td>

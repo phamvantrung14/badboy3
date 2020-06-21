@@ -28,8 +28,8 @@
 <body class="signup-page">
 <div class="signup-box">
     <div class="logo">
-        <a href="javascript:void(0);">Admin<b>BSB</b></a>
-        <small>Admin BootStrap Based - Material Design</small>
+        <a href="javascript:void(0);">Admin<b></b></a>
+        <small>Admin Davi's Bugers - Trungpv398 Design</small>
     </div>
     <div class="card">
         <div class="body">
@@ -86,10 +86,10 @@
 {{--                    <label for="terms">I read and agree to the <a href="javascript:void(0);">terms of usage</a>.</label>--}}
 {{--                </div>--}}
 
-                <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">SIGN UP</button>
+                <button class="btn btn-block btn-lg bg-pink waves-effect" type="submit">ĐĂNG KÝ</button>
 
                 <div class="m-t-25 m-b--5 align-center">
-                    <a href="{{route("login-admin")}}">You already have a membership?</a>
+                    <a href="{{route("login-admin")}}">Bạn Đã Có Tài Khoản?</a>
                 </div>
             </form>
         </div>

@@ -2,9 +2,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="icon" href="{{asset("frontend/img/fav-icon.png")}}" type="image/x-icon" />
+<link rel="icon" href="{{asset("frontend/img/logo-badboy.png")}}" type="image/x-icon" />
 <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Cake - Bakery</title>
+<title>Davie's  Bugers</title>
 
 <!-- Icon css link -->
 <link href="{{asset("frontend/css/font-awesome.min.css")}}" rel="stylesheet">
@@ -31,4 +31,7 @@
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <![endif]-->

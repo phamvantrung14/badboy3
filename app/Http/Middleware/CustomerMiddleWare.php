@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-use Auth;
+//use Auth;
 use Closure;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerMiddleWare
 {
@@ -10,7 +11,16 @@ class CustomerMiddleWare
     public function __construct()
     {
     }
+    public function getImage()
+    {
+        if (is_null($this->get("image")))
+        {
 
+            return asset("https://cf.shopee.vn/file/e5c67a99dc9a993d26a88bfd104323d5_tn");
+        }else{
+            return asset($this->__get("image"));
+        }
+    }
     /**
      * Handle an incoming request.
      *
@@ -20,10 +30,10 @@ class CustomerMiddleWare
      */
     public function handle($request, Closure $next, $guard = "cus")
     {
-        if (Auth::guard($guard)->check()){
-            return $next($request);
+        if (!Auth::guard($guard)->check()){
+            return redirect()->route("customer.login");
 
         }
-        return redirect()->route('trang-chu')->with("error","Bạn cần đăng nhập");
+        return $next($request);
     }
 }

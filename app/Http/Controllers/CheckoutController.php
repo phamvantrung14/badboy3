@@ -7,6 +7,7 @@ use App\Models\Order_detail;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Auth;
 
 class CheckoutController extends Controller
 {
@@ -21,6 +22,15 @@ class CheckoutController extends Controller
     }
     public function submit_form(CartHelper $cart,Request $request)
     {
+        if (Auth::guard("cus")->check()){
+            $cus_id = Auth::guard("cus")->user()->id;
+        }else{
+            $cus_id = null;
+        }
+//        dd($cus_id);
+        $request->merge(["customer_id"=>$cus_id]);
+        $request->merge(["status"=>0]);
+        $request->merge(["total_price"=>$cart->total_price]);
 //        dd($request->all());
 //        dd($cart);
         $request->validate([
@@ -39,17 +49,19 @@ class CheckoutController extends Controller
             "address.min"=>"Địa chỉ phải từ 4 ký tự..",
             "payment.required"=>"Hãy chọn hình thức thanh toán.."
         ]);
-        $order = Orders::create([
-            "order_name"=>$request->get("order_name"),
-            "email"=>$request->get("email"),
-            "gender"=>$request->get("gender"),
-            "phone_number"=>$request->get("phone_number"),
-            "address"=>$request->get("address"),
-            "payment"=>$request->get("payment"),
-            "note"=>$request->get("note"),
-            "status"=>0,
-            "total_price"=>$cart->total_price
-        ]);
+        $order = Orders::create($request->all());
+//        $order = Orders::create([
+//            "order_name"=>$request->get("order_name"),
+//            "customer_id"=>$cus_id,
+//            "email"=>$request->get("email"),
+//            "gender"=>$request->get("gender"),
+//            "phone_number"=>$request->get("phone_number"),
+//            "address"=>$request->get("address"),
+//            "payment"=>$request->get("payment"),
+//            "note"=>$request->get("note"),
+//            "status"=>0,
+//            "total_price"=>$cart->total_price
+//        ]);
         foreach ($cart->items as $item)
         {
 

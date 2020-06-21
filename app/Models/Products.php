@@ -22,4 +22,8 @@ class Products extends Model
     {
         return url("/product-deatil/{$this->__get("slug")}");
     }
+    public function getImage()
+    {
+        return $this->product_avatar;
+    }
 }

@@ -47,6 +47,119 @@ Table of Content:
   margin: 0px;
   padding: 0px;
 }
+
+.content-order-account .menu{
+    margin-top: 30px !important;
+    background-color: white;
+    /*border: 1px solid gray;*/
+}
+.content-order-account .menu a{
+    color: #1b4b72;
+}
+.content-order-account .body .content-order{
+    background-color: white;
+}
+.body .content-order .header{
+    color: #555;
+    padding: 20px;
+    position: relative;
+    border-bottom: 1px solid rgba(204, 204, 204, 0.35);
+}
+.body .content-order .header h4{
+    margin: 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #111;
+}
+.content-order .header .status-h{
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    list-style: none;
+    color: rgba(227, 74, 13, 0.93);
+}
+.list-group-item1{
+    position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    margin-bottom: -1px;
+    /*background-color: #fff;*/
+    /*border: 1px solid rgba(0,0,0,.125);*/
+}
+.list-group-item1 a{
+    color: gray;
+}
+.list-group-item1 img{
+    width: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+}
+.active1{
+    color: red;
+    /*border-bottom: red;*/
+}
+.nav-item-a{
+border-bottom: 3px solid #e55430;
+}
+.nav-pills .nav-link.active1, .nav-pills .show>.nav-link {
+    color: #e55430;
+    /*border-bottom: #e55430;*/
+    /*text-decoration: underline;*/
+    /*background-color: #ff00a1;*/
+}
+.btn-1{
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    /*border-radius: .25em;*/
+    border: 0px;
+}
+.btn-ct {
+    color: #fff;
+    background-color: #17a2b8;
+
+}
+.btn-ct:hover{
+    color: #fff;
+    background-color: #138496;
+
+}
+.content-order .content{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.col-md-4 .row .card-md{
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    /*border: 1px solid rgba(0,0,0,.125);*/
+    border-radius: .25rem;
+    width: 18rem;
+    /*padding: 0px 15%;*/
+    /*text-align: center;*/
+}
+.col-md-4 .row .card-md img{
+    border-radius: 50%;
+    margin: 0px 25%;
+    width: 100px;
+}
+
+
 div#main_slider {
     height: 450px !important;
 }
@@ -75,6 +188,7 @@ body {
   color: #797979;
   margin: 0px;
   padding: 0px;
+    background-color: #F5F5F5;
 }
 
 #success {

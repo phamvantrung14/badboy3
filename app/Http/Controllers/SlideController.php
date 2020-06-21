@@ -48,7 +48,8 @@ class SlideController extends Controller
             Slide::create([
                 'status'=>$request->get('status'),
                 'slide_title'=>$request->get('slide_title'),
-                'image'=>$anh
+                'image'=>$anh,
+                'type_slide'=>$request->get('type_slide')
             ]);
 
         }catch (\Exception $exception)
@@ -95,6 +96,7 @@ class SlideController extends Controller
             $slide->status = $request->get("status");
             $slide->slide_title = $request->get("slide_title");
             $slide->image = $anh;
+            $slide->type_slide = $request->get("type_slide");
 
             $slide->save();
 

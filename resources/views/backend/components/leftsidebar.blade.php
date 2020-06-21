@@ -112,36 +112,36 @@
         </li>
         <li>
             <a href="javascript:void(0);" class="menu-toggle">
+                <i class="material-icons">reorder</i>
+                <span>Đơn Hàng</span>
+            </a>
+            <ul class="ml-menu">
+                <li>
+                    <a href="{{route("orders.index")}}">Danh Sách Đơn Hàng</a>
+                </li>
+
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);" class="menu-toggle">
                 <i class="material-icons">account_box</i>
                 <span>Tài Khoản</span>
             </a>
             <ul class="ml-menu">
                 <li>
-                    <a href="{{route("account")}}">Danh Sách Tài Khoản</a>
+                    <a href="{{route("account")}}">Quản Lý Tài Khoản Admin</a>
+                </li>
+                <li>
+                    <a href="{{route("account.customer")}}">Quản Lý Tài Khoản Users</a>
                 </li>
             </ul>
         </li>
-
-
-
-
-
-
-
-
-
-
-
-
     </ul>
 </div>
 <!-- #Menu -->
 <!-- Footer -->
 <div class="legal">
     <div class="copyright">
-        &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
-    </div>
-    <div class="version">
-        <b>Version: </b> 1.0.5
+        FPT-Aptech <a href="javascript:void(0);">AdminBSB - DAVIE'S BURGERS</a>.
     </div>
 </div>

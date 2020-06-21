@@ -19,18 +19,6 @@
                 <h4>
                     Slide {{$slide->__get('slide_title')}}
                 </h4>
-                {{--                <ul class="header-dropdown m-r--5">--}}
-                {{--                    <li class="dropdown">--}}
-                {{--                        <a class="dropdown-toggle" role="button" aria-expanded="true" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">--}}
-                {{--                            <i class="material-icons">more_vert</i>--}}
-                {{--                        </a>--}}
-                {{--                        <ul class="dropdown-menu pull-right">--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Another action</a></li>--}}
-                {{--                            <li><a class=" waves-effect waves-block" href="javascript:void(0);">Something else here</a></li>--}}
-                {{--                        </ul>--}}
-                {{--                    </li>--}}
-                {{--                </ul>--}}
             </div>
             @if(count($errors)>0)
                 <div class="alert alert-danger">
@@ -59,6 +47,16 @@
                         <div class="form-line">
                             <input class="form-control" id="" value="{{$slide->__get("slide_title")}}" type="text" name="slide_title"   placeholder="Nhập tên cửa hàng">
                         </div>
+                    </div>
+                    <label for="">Loại Slide</label>
+                    <div class="form-group">
+                        <select name="type_slide" id="">
+                            <option value="0" {{($slide->__get("type_slide")==0)?"selected":""}}>Mặc Định</option>
+                            <option value="1" {{($slide->__get("type_slide")==1)?"selected":""}}>Trang Chủ</option>
+                            <option value="2" {{($slide->__get("type_slide")==2)?"selected":""}}>Sản Phẩm</option>
+                            <option value="3" {{($slide->__get("type_slide")==3)?"selected":""}}>Tin Tức</option>
+                            <option value="4" {{($slide->__get("type_slide")==4)?"selected":""}}>Cửa Hàng</option>
+                        </select>
                     </div>
                     <label for="">Chon ảnh</label>
                     <div class="form-group">

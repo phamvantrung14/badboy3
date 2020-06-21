@@ -31,10 +31,12 @@
 {{--<script src="{{asset('backend/plugins/flot-charts/jquery.flot.time.js')}}"></script>--}}
 
 {{--<!-- Sparkline Chart Plugin Js -->--}}
-{{--<script src="{{asset('backend/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>--}}
+<script src="{{asset('backend/plugins/jquery-sparkline/jquery.sparkline.js')}}"></script>
 
 <!-- Custom Js -->
 <script src="{{asset('backend/js/admin.js')}}"></script>
+
+
 
 
 {{--<script src="{{asset('backend/js/pages/index.js')}}"></script>--}}
@@ -48,7 +50,6 @@
             url:"{{route("timkiem")}}",
             method:"POST",
             data:{
-
             },
             success: function () {
                 alert("tim kiem thanh cong...")
@@ -56,3 +57,45 @@
         })
     }
 </script>
+<script>
+    $wt={{count($waiting)}} ;
+    $cf={{count($confirm)}};
+    $cp={{count($complete)}};
+    $sh={{count($ship)}};
+    let listday = $("#container2").attr("data-list-day");
+    listday = JSON.parse(listday);
+    let data = "{{$dataMoney}}";
+    dataChart = JSON.parse(data.replace(/&quot;/g,'"'));
+    let listMoneyMoth = $("#container2").attr('data-money');
+    listMoneyMoth = JSON.parse(listMoneyMoth);
+    let listMoneyMothDefault = $("#container2").attr('data-money-default');
+    listMoneyMothDefault = JSON.parse(listMoneyMothDefault);
+    Highcharts.chart('container', {
+        chart: {type: 'column'},
+        title: {text: 'Biểu đồ doanh thu ngày và tháng(VNĐ)'},
+        accessibility: {announceNewData: {enabled: true}},
+        xAxis: {type: 'category'},yAxis: {title: {text: 'Mức độ'}},
+        legend: {enabled: false},
+        plotOptions: {series: {borderWidth: 0,dataLabels: {enabled: true,number_format: '{point.y:.1f}VNĐ'}}},
+        tooltip: {headerFormat: '<span style="font-size:11px">{series.name}</span><br>',pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.f}VNĐ</b><br/>'},
+        series: [{name: "Browsers", colorByPoint: true, data: dataChart,}]
+    });
+    Highcharts.chart('container2', {
+        chart: {type: 'line'},
+        title: {text: 'Biểu Đồ Doanh Thu Chi Tiết Hàng Ngày(VNĐ)'},
+        subtitle: {text: ''},
+        xAxis: {categories: listday},
+        yAxis: {title: {text: 'Temperature (°C)'}},
+        plotOptions: {line: {dataLabels: {enabled: true}, enableMouseTracking: false}},
+        series: [{name: 'Hoàn Tất Giao Dịch', data:listMoneyMoth,}, {name: 'Đơn Hàng Được Xác Nhận', data:listMoneyMothDefault,}]
+    });
+    Highcharts.chart('container3', {
+        chart: {plotBackgroundColor: null, plotBorderWidth: 0, plotShadow: false},
+        title: {text: 'Trạng Thái<br>Đơn Hàng<br>2020', align: 'center', verticalAlign: 'middle', y: 60},
+        tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
+        accessibility: {point: {valueSuffix: '%'}},
+        plotOptions: {pie: {dataLabels: {enabled: true, distance: -50, style: {fontWeight: 'bold', color: 'white'}}, startAngle: -90, endAngle: 90, center: ['50%', '75%'], size: '110%'}},
+        series: [{type: 'pie',name: 'Browser share', innerSize: '50%', data: [['Đang Chờ', $wt], ['Xác Nhận', $cf], ['Đang Giao', $sh], ['Hoàn Thành', $cp],]}]
+    });
+</script>
+@yield("script")

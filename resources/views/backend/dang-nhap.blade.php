@@ -25,14 +25,14 @@
 <body class="login-page ls-closed">
 <div class="login-box">
     <div class="logo">
-        <a href="javascript:void(0);">Admin<b>BSB</b></a>
-        <small>Admin BootStrap Based - Material Design</small>
+        <a href="javascript:void(0);">Admin<b></b></a>
+        <small>Admin Davi's Bugers - Trungpv398 Design</small>
     </div>
     <div class="card">
         <div class="body">
             <form id="sign_in" method="POST" action="{{route("post-login-ad")}}" novalidate="novalidate">
                 @csrf
-                <div class="msg">Sign in to start your session</div>
+                <div class="msg">Nhâp Email Và Mật Khẩu Để Đăng Nhập</div>
                 @if(session('thong_bao'))
                     <div class="header">
                         <div class="alert alert-success">
@@ -41,12 +41,12 @@
                     </div>
                 @endif
                 @if(session("error"))
-                    <span class="error invalid-feedback" style="color: red">{{session("error")}}</span>
-{{--                    <div class="header">--}}
-{{--                        <div class="alert alert-success">--}}
-{{--                            {{session("error")}}--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+{{--                    <span class="error invalid-feedback" style="color: red">{{session("error")}}</span>--}}
+                    <div class="header">
+                        <div class="alert alert-success">
+                            {{session("error")}}
+                        </div>
+                    </div>
                 @endif
                 <div class="input-group">
                         <span class="input-group-addon">
@@ -61,7 +61,7 @@
                             <i class="material-icons">lock</i>
                         </span>
                     <div class="form-line">
-                        <input name="password" class="form-control" aria-required="true" required="" type="password" placeholder="Password">
+                        <input name="password" class="form-control" aria-required="true" required="" type="password" placeholder="Mật Khẩu">
                     </div>
                 </div>
                 <div class="row">
@@ -70,15 +70,15 @@
 {{--                        <label for="rememberme">Remember Me</label>--}}
                     </div>
                     <div class="col-xs-4">
-                        <button class="btn btn-block bg-pink waves-effect" type="submit">SIGN IN</button>
+                        <button class="btn btn-block bg-pink waves-effect" type="submit">ĐĂNG NHẬP</button>
                     </div>
                 </div>
                 <div class="row m-t-15 m-b--20">
                     <div class="col-xs-6">
-                        <a href="{{route("register")}}">Register Now!</a>
+                        <a href="{{route("register")}}">Đăng Ký!</a>
                     </div>
                     <div class="col-xs-6 align-right">
-                        <a href="{{route("form-reset-pas")}}">Forgot Password?</a>
+                        <a href="{{route("form-reset-pas")}}">Tìm Lại Mật Khẩu?</a>
                     </div>
                 </div>
             </form>

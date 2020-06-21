@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\HelperClass\Date;
+use App\Models\Customer;
+use App\Models\News;
+use App\Models\Orders;
 use Illuminate\Http\Request;
 use App\User;
 use App\Models\Store;
@@ -22,11 +26,27 @@ class WebController extends Controller
         $slide1 = Slide::orderBy("id","ASC")->where("status",2)->get();
         $products1= Products::orderBy("id","ASC")->where("new",1)->where("status",2)->limit(6)->get();
         $drinks = Products::orderBy("id","ASC")->where("id_type",9)->where("new",1)->where("status",2)->limit(6)->get();
-        return view("frontend.index",compact("type_pd1","products","slide1","products1","drinks","cakeBirthday","giftBox"));
+        $news = News::orderBy("created_at","DESC")->where("status",2)->limit(3)->get();
+        return view("frontend.index",compact("type_pd1","products","slide1","products1","drinks","cakeBirthday","giftBox","news"));
     }
     public function index()
     {
-        return view('backend.index');
+        $orderWaiting = Orders::where("status",0)->orderBy("created_at","ASC")->limit(8)->get();
+        $orderShip = Orders::where("status",2)->orderBy("updated_at","ASC")->limit(8)->get();
+        $productNews =Products::where("new",1)->limit(8)->get();
+        $totalProducts = Products::where("status",2)->get();
+        $totalNews = News::all();
+        $totalStore = Store::all();
+        $totalMember = Customer::all();
+        return view('backend.index',[
+            "orderWaiting"=>$orderWaiting,
+            "orderShip"=>$orderShip,
+            "productNews"=>$productNews,
+            "totalProducts"=>$totalProducts,
+            "totalNews"=>$totalNews,
+            "totalStore"=>$totalStore,
+            "totalMember"=>$totalMember
+        ]);
     }
 
     public function loginAdmin()
@@ -35,14 +55,12 @@ class WebController extends Controller
     }
     public function postLoginAdmin(Request $request)
     {
-//        dd($request->all());
         if (Auth::attempt(["email"=>$request->__get("email"),"password"=>$request->__get("password")])){
             return redirect()->route("admin");
         }else{
             return redirect()->back()->with("error","Tài Khoản Không Chính Xác");
         }
     }
-
     public function logoutAdmin()
     {
         Auth::logout();
@@ -55,7 +73,6 @@ class WebController extends Controller
     }
     public function registerSave(Request $request)
     {
-//        dd($request->all());
         $request->validate(
             [
                 "user_name"=>"required|min:4",
@@ -104,5 +121,25 @@ class WebController extends Controller
     {
         $store = Store::orderBy("area","ASC")->get();
         return view("frontend.list-store",compact("store"));
+    }
+
+    public function getNews()
+    {
+        $new = News::where("status",2)->orderby("created_at","DESC")->paginate(10);
+        return view("frontend.new.list-new",compact("new"));
+    }
+    public function getDetailNews(News $new)
+    {
+        $new = News::findOrFail($new->id);
+        return view("frontend.new.new-detail",compact("new"));
+    }
+
+    //tim kiem san pham theo ten
+    public function searchProduct(Request $request)
+    {
+        $stk = $request->stk;
+        $product = Products::where("product_name",'like','%'.$stk.'%')->get();
+        return view("frontend.tk-pd",compact("product"));
+
     }
 }

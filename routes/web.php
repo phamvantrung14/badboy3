@@ -62,6 +62,8 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
         Route::put("/update-role/{id}","AccountController@updateQuyenAc");
 
         Route::put("/update/{id}","AccountController@update");
+        Route::get("/customer","AccountController@indexCus")->name("account.customer");
+
     });
     //hệ thống slide
     Route::group(['prefix'=>'slide'],function (){
@@ -119,6 +121,7 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
         //tim kiếm
         Route::post('/timkiem',"ProductController@timkiem")->name("timkiem");
     });
+    Route::resource("orders","OrderController");
 
 });
 
