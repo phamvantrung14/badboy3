@@ -64,42 +64,42 @@ class AppServiceProvider extends ServiceProvider
             ->get()->toArray();
 
             //doanh thu theo trang thái xác nhận đơn hàng
-            $revenueOdersMonthDefault = Orders::where("status",1)->whereMonth("updated_at",date('m'))
-                ->select(\DB::raw('sum(total_price) as totalMoney'),\DB::raw('DATE(updated_at) day'))->groupBy('day')
-                ->get()->toArray();
-            $listDay = Date::getListDayInMonth();
-           $arrOrders = [];
-           $arrOrdersDefault = [];
-            foreach ($listDay as $day)
-            {
-                $total =0;
-                foreach ($revenueOdersMonth as $key =>$revenue)
-                {
-                    if ($revenue['day'] == $day){
-                        $total = $revenue['totalMoney'];
-                        break;
-                    }
-                }
-                $arrOrders[]=(int)$total;
-                $total = 0;
-                foreach ($revenueOdersMonthDefault as $key =>$revenue)
-                {
-                    if ($revenue['day'] == $day){
-                        $total = $revenue['totalMoney'];
-                        break;
-                    }
-                }
-                $arrOrdersDefault[]=(int)$total;
-
-            }
+//            $revenueOdersMonthDefault = Orders::where("status",1)->whereMonth("updated_at",date('m'))
+//                ->select(\DB::raw('sum(total_price) as totalMoney'),\DB::raw('DATE(updated_at) day'))->groupBy('day')
+//                ->get()->toArray();
+//            $listDay = Date::getListDayInMonth();
+//           $arrOrders = [];
+//           $arrOrdersDefault = [];
+//            foreach ($listDay as $day)
+//            {
+//                $total =0;
+//                foreach ($revenueOdersMonth as $key =>$revenue)
+//                {
+//                    if ($revenue['day'] == $day){
+//                        $total = $revenue['totalMoney'];
+//                        break;
+//                    }
+//                }
+//                $arrOrders[]=(int)$total;
+//                $total = 0;
+//                foreach ($revenueOdersMonthDefault as $key =>$revenue)
+//                {
+//                    if ($revenue['day'] == $day){
+//                        $total = $revenue['totalMoney'];
+//                        break;
+//                    }
+//                }
+//                $arrOrdersDefault[]=(int)$total;
+//
+//            }
 //            dd($arrOrders);
             $view->with([
                "type_pd"            =>$type_pd,
                 "cart"              => new CartHelper(),
                 'dataMoney'         =>json_encode($dataMoney),
-                'listDay'           =>json_encode($listDay),
-                'arrOrders'         =>json_encode($arrOrders),
-                'arrOrdersDefault'  =>json_encode($arrOrdersDefault),
+//                'listDay'           =>json_encode($listDay),
+//                'arrOrders'         =>json_encode($arrOrders),
+//                'arrOrdersDefault'  =>json_encode($arrOrdersDefault),
                 'month'             =>$month,
                 'waiting'           =>$waiting,
                 'confirm'           =>$confirm,
