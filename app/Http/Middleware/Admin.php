@@ -18,7 +18,7 @@ class Admin
     public function handle($request, Closure $next)
     {
         if (!Auth::check())
-            return redirect()->route("login-admin")->with("error","Bạn Cần Đăng Nhập ...");
+            return redirect()->route("login-admin");
         $currentUser = Auth::user();
         if ($currentUser->__get("role") != User::ADMIN_ROLE)
         {

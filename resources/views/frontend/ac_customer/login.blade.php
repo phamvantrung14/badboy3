@@ -25,7 +25,7 @@
 <body class="login-page ls-closed">
 <div class="login-box">
     <div class="logo">
-        <a href="javascript:void(0);">Admin<b></b></a>
+        <a href="javascript:void(0);">User<b></b></a>
         <small>Admin Davi's Bugers - Trungpv398 Design</small>
     </div>
     <div class="card">

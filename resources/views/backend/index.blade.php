@@ -57,15 +57,13 @@
         <!-- #END# Task Info -->
         <!-- Browser Usage -->
         <div class="col-md-4">
-
-
         </div>
         <div class="row clearfix">
             <!-- Task Info -->
             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                 <div class="card">
                     <div class="header">
-                        <h2>TASK INFOS</h2>
+                        <h2>THỐNG KÊ DOANH THU NGÀY {{$day1}} THÁNG {{$month}} NĂM {{$year}}</h2>
                         <ul class="header-dropdown m-r--5">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -79,10 +77,9 @@
                             </li>
                         </ul>
                     </div>
-{{--                    <figure class="highcharts-figure">--}}
-{{--                    <div id="container"></div>--}}
-
-{{--                    </figure>--}}
+                    <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    </figure>
                 </div>
             </div>
             <!-- #END# Task Info -->
@@ -90,14 +87,14 @@
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                 <div class="card">
                     <div class="header">
-                        <h2>Trang Thai Don Hang</h2>
+                        <h2>TRẠNG THÁI ĐƠN HÀNG THÁNG {{$month}}</h2>
                     </div>
-{{--                    <div class="body">--}}
-{{--                        <figure class="highcharts-figure">--}}
-{{--                            <div id="container3"></div>--}}
+                    <div class="body">
+                        <figure class="highcharts-figure">
+                            <div id="container3"></div>
 
-{{--                        </figure>--}}
-{{--                    </div>--}}
+                        </figure>
+                    </div>
                 </div>
             </div>
             <!-- #END# Browser Usage -->
@@ -165,11 +162,11 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="card">
                     <div class="header">
-                        <h2>Thống Kê Doanh Thu Hàng Ngày Trong Tháng {{$month}}</h2>
+                        <h2>THỐNG KÊ DOANG THU HÀNG NGÀY TRONG THÁNG {{$month}}</h2>
                     </div>
-{{--                    <figure class="highcharts-figure">--}}
-{{--                        <div id="container2" data-list-day="{{$listDay}}" data-money="{{$arrOrders}}" data-money-default="{{$arrOrdersDefault}}"></div>--}}
-{{--                    </figure>--}}
+                    <figure class="highcharts-figure">
+                        <div id="container2" data-list-day="{{$listDay}}" data-money="{{$arrOrders}}" data-money-default="{{$arrOrdersDefault}}"></div>
+                    </figure>
                 </div>
             </div>
         </div>

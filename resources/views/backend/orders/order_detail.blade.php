@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="header">
                     <h4>
-                        ĐƠN HÀNG: (anh/chị)-{{$data->__get("order_name")}} - {{$data->__get("created_at")}}
+                        ĐƠN HÀNG: (anh/chị)-{{$data2->__get("order_name")}} - {{$data2->__get("created_at")}}
                     </h4>
 
 
@@ -38,35 +38,35 @@
                             <tbody>
                             <tr>
                                 <th>Người Nhận: </th>
-                                <td>{{$data->__get("order_name")}}</td>
+                                <td>{{$data2->__get("order_name")}}</td>
                             </tr>
                             <tr>
                                 <th>Email:</th>
-                                <td>{{$data->getEmail()}}</td>
+                                <td>{{$data2->getEmail()}}</td>
                             </tr>
                             <tr>
                                 <th>Giới Tính:</th>
-                                <td>{{$data->getGender()}}</td>
+                                <td>{{$data2->getGender()}}</td>
                             </tr>
                             <tr>
                                 <th>Tổng Tiền:</th>
-                                <td>{{$data->getTotalPrice()}}</td>
+                                <td>{{$data2->getTotalPrice()}}</td>
                             </tr>
                             <tr>
                                 <th>Địa Chỉ Nhận Hàng: </th>
-                                <td>{{$data->address}}</td>
+                                <td>{{$data2->address}}</td>
                             </tr>
                             <tr>
                                 <th>SĐT: </th>
-                                <td>{{$data->__get("phone_number")}}</td>
+                                <td>{{$data2->__get("phone_number")}}</td>
                             </tr>
                             <tr>
                                 <th>Note: </th>
-                                <td>{{$data->getNote()}}</td>
+                                <td>{{$data2->getNote()}}</td>
                             </tr>
                             <tr>
                                 <th>Trạng Thái ĐH: </th>
-                                <td><a class="label bg-green">{{$data->getStatus()}}</a></td>
+                                <td><a class="label bg-green">{{$data2->getStatus()}}</a></td>
                             </tr>
                             </tbody>
                         </table>
@@ -93,27 +93,27 @@
                 <div class="body">
                     <div class="table-responsive">
 
-                        <form action="{{route("orders.update",["order"=>$data->__get("id")])}}" method="POST">
+                        <form action="{{route("orders.update",["order"=>$data2->__get("id")])}}" method="POST">
                             @csrf
                             @method("PUT")
                             <label for="">Trạng Thái:</label>
                             <div class="form-group">
                                 <div class="form-line">
                                 <select class="" name="status" id="">
-                                    @if($data->__get("status")==4)
+                                    @if($data2->__get("status")==4)
 {{--                                    <option value="0">Đang Xử Lý</option>--}}
 {{--                                    <option value="1">Xác Nhận Đơn Hàng</option>--}}
 {{--                                    <option value="2">Đang Vận Chuyển</option>--}}
 {{--                                    <option value="3">Hoàn Thành</option>--}}
                                     <option value="4" selected>Hủy Đơn Hàng</option>
-                                    @elseif($data->__get("status")==3)
+                                    @elseif($data2->__get("status")==3)
                                      <option value="3" selected>Hoàn Thành</option>
                                     @else
-                                        <option value="0" {{($data->status)==0?"selected":""}}>Đang Xử Lý</option>
-                                        <option value="1" {{($data->status)==1?"selected":""}}>Xác Nhận Đơn Hàng</option>
-                                        <option value="2" {{($data->status)==2?"selected":""}}>Đang Vận Chuyển</option>
-                                        <option value="3" {{($data->status)==3?"selected":""}}>Hoàn Thành</option>
-                                        <option value="4" {{($data->status)==4?"selected":""}}>Hủy Đơn Hàng</option>
+                                        <option value="0" {{($data2->status)==0?"selected":""}}>Đang Xử Lý</option>
+                                        <option value="1" {{($data2->status)==1?"selected":""}}>Xác Nhận Đơn Hàng</option>
+                                        <option value="2" {{($data2->status)==2?"selected":""}}>Đang Vận Chuyển</option>
+                                        <option value="3" {{($data2->status)==3?"selected":""}}>Hoàn Thành</option>
+                                        <option value="4" {{($data2->status)==4?"selected":""}}>Hủy Đơn Hàng</option>
                                     @endif
                                 </select>
                                 </div>
@@ -147,7 +147,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data_detail as $value)
+                        @foreach($data2_detail as $value)
                             <tr >
                                 <th scope="row">{{$loop->index+1}}</th>
                                 <td>{{$value->Product->product_name}}</td>

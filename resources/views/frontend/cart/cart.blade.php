@@ -3,10 +3,10 @@
     <section class="banner_area">
         <div class="container">
             <div class="banner_text">
-                <h3>Cart</h3>
+                <h3>Giỏ Hàng</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="{{route("trang-chu")}}">Trang Chủ</a></li>
+                    <li><a href="cart.html">Giỏ Hàng</a></li>
                 </ul>
             </div>
         </div>

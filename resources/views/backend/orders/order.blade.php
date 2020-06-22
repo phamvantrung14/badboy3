@@ -13,6 +13,52 @@
             </div>
         </div>
     </div>
+
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h4>Tìm Kiếm Nhanh Theo Trạng Thái</h4>
+                    <ul class="header-dropdown m-r--5">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" role="button" aria-expanded="false" aria-haspopup="true" href="javascript:void(0);" data-toggle="dropdown">
+                                <i class="material-icons">more_vert</i>
+                            </a>
+                            <ul class="dropdown-menu pull-right">
+                                <li><a class=" waves-effect waves-block" href="{{route('orders.index')}}">Tất cả</a></li>
+
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <div class="row clearfix">
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <input type="hidden" id="waiting" name="status" value="0">
+                                <button class="btn btn-success btn-lg btn-block waves-effect" onclick="addStWaiting();" type="button">ĐANG CHỜ <span class="badge">{{count($stwaiting)}}</span></button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <input type="hidden" id="confirm" name="status" value="1">
+                                <button class="btn btn-primary btn-lg btn-block waves-effect" onclick="addStConfirm();" type="button">ĐÃ XÁC NHẬN <span class="badge">{{count($stconfirm)}}</span></button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <input type="hidden" id="ship" name="status" value="2">
+                                <button class="btn btn-danger btn-lg btn-block waves-effect" onclick="addStShip();" type="submit">ĐANG GIAO <span class="badge">{{count($stship)}}</span></button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                                <input type="hidden" id="complete" name="status" value="3">
+                                <button class="btn btn-warning btn-lg btn-block waves-effect"onclick="addStComplete();" type="submit">HOÀN THÀNH <span class="badge">{{count($stconplete)}}</span></button>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+                            <input type="hidden" id="deleteOrder" name="status" value="4">
+                            <button class="btn btn-warning btn-lg btn-block waves-effect" onclick="addStDeleteOrder();" type="submit">BỊ HỦY<span class="badge">{{count($stdelete)}}</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="card">
@@ -29,7 +75,7 @@
                         </div>
                     </div>
                 @endif
-                <div class="body table-responsive">
+                <div class="bb body table-responsive">
                     <table class="table table-striped">
                         <thead class="text-center">
                         <tr>
@@ -69,9 +115,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {!! $datas->render('vendor.pagination.pgiadmin') !!}
                 </div>
             </div>
         </div>
     </div>
 
 @endsection
+

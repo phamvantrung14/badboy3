@@ -3,10 +3,10 @@
     <section class="banner_area">
         <div class="container">
             <div class="banner_text">
-                <h3>Chekout</h3>
+                <h3>Mua Hàng</h3>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="checkout.html">Chekout</a></li>
+                    <li><a href="{{route("trang-chu")}}">Trang Chủ</a></li>
+                    <li><a href="checkout.html">Mua Hàng</a></li>
                 </ul>
             </div>
         </div>
@@ -17,6 +17,11 @@
 {{--            <div class="return_option">--}}
 {{--                <h4>Returning customer? <a href="#">Click here to login</a></h4>--}}
 {{--            </div>--}}
+            @if(!Auth::guard('cus')->check())
+            <div class="return_option">
+                <h4>Danh cho thành viên của Davie's Bugers? <a href="{{route("customer.login")}}">Click để đăng nhập</a></h4>
+            </div>
+            @endif
             <div class="row">
                 <div class="col-lg-7">
                     <div class="main_title">
@@ -132,40 +137,6 @@
                                 <h5>Shipping And Handling<span class="text_f">Free Shipping</span></h5>
                                 <h3>Tổng Tiền <span>{{number_format($cart->total_price)}} VNĐ</span></h3>
                             </div>
-{{--                            <div id="accordion" class="accordion_area">--}}
-{{--                                <div class="card">--}}
-{{--                                    <div class="card-header" id="headingOne">--}}
-{{--                                        <h5 class="mb-0">--}}
-{{--                                            <a class="btn btn-link collapsed" value="1" name="payment" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">--}}
-{{--                                                Thanh Toán Khi Giao Hàng--}}
-{{--                                            </a>--}}
-{{--                                        </h5>--}}
-{{--                                    </div>--}}
-{{--                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion" style="">--}}
-{{--                                        <div class="card-body">--}}
-{{--                                            Khi nhận hàng khách hàng kiểm tra hàng, rồi thanh toán cho Ship.--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="card">--}}
-{{--                                    <div class="card-header" id="headingTwo">--}}
-{{--                                        <h5 class="mb-0">--}}
-{{--                                            <a class="btn btn-link collapsed" value="2" name="payment" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">--}}
-{{--                                                Chuyển Khoản--}}
-{{--                                            </a>--}}
-{{--                                        </h5>--}}
-{{--                                    </div>--}}
-{{--                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion" style="">--}}
-{{--                                        <div class="card-body">--}}
-{{--                                            Vùi lòng chuyển khoản vào TK:--}}
-{{--                                            VietinBank 88886666888666.--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                    <button type="submit" value="submit" class="btn pest_btn">Đặt Hàng</button>--}}
-
-
-{{--                            </div>--}}
                         </div>
                     </div>
                 </div>

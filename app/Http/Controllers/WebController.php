@@ -58,7 +58,7 @@ class WebController extends Controller
         if (Auth::attempt(["email"=>$request->__get("email"),"password"=>$request->__get("password")])){
             return redirect()->route("admin");
         }else{
-            return redirect()->back()->with("error","Tài Khoản Không Chính Xác");
+            return redirect()->back()->with("error","Tài Khoản,mật khẩu Không Chính Xác");
         }
     }
     public function logoutAdmin()

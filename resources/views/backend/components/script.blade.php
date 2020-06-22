@@ -58,6 +58,73 @@
     }
 </script>
 <script>
+    function addStWaiting() {
+        var _status = $("#waiting").val();
+        $.ajax({
+            url:"{{url("admin/order/dangcho")}}",
+            method:"GET",
+            data:{
+                status:_status,
+            }
+        }).done(function (response) {
+            $(".bb").empty();
+            $(".bb").html(response);
+        })
+    }
+    function addStConfirm() {
+        var _status = $("#confirm").val();
+        $.ajax({
+            url:"{{url("admin/order/daxacnhan")}}",
+            method:"GET",
+            data:{
+                status:_status,
+            }
+        }).done(function (response) {
+            $(".bb").empty();
+            $(".bb").html(response);
+        })
+    }
+    function addStShip() {
+        var _status = $("#ship").val();
+        $.ajax({
+            url:"{{url("admin/order/danggiao")}}",
+            method:"GET",
+            data:{
+                status:_status,
+            }
+        }).done(function (response) {
+            $(".bb").empty();
+            $(".bb").html(response);
+        })
+    }
+    function addStComplete() {
+        var _status = $("#complete").val();
+        $.ajax({
+            url:"{{url("admin/order/hoanthanh")}}",
+            method:"GET",
+            data:{
+                status:_status,
+            }
+        }).done(function (response) {
+            $(".bb").empty();
+            $(".bb").html(response);
+        })
+    }
+    function addStDeleteOrder() {
+        var _status = $("#deleteOrder").val();
+        $.ajax({
+            url:"{{url("admin/order/bihuy")}}",
+            method:"GET",
+            data:{
+                status:_status,
+            }
+        }).done(function (response) {
+            $(".bb").empty();
+            $(".bb").html(response);
+        })
+    }
+</script>
+<script>
     $wt={{count($waiting)}} ;
     $cf={{count($confirm)}};
     $cp={{count($complete)}};
@@ -72,7 +139,7 @@
     listMoneyMothDefault = JSON.parse(listMoneyMothDefault);
     Highcharts.chart('container', {
         chart: {type: 'column'},
-        title: {text: 'Biểu đồ doanh thu ngày và tháng(VNĐ)'},
+        title: {text: 'Biểu đồ doanh thu ngày,tháng và năm(VNĐ)'},
         accessibility: {announceNewData: {enabled: true}},
         xAxis: {type: 'category'},yAxis: {title: {text: 'Mức độ'}},
         legend: {enabled: false},
@@ -91,11 +158,12 @@
     });
     Highcharts.chart('container3', {
         chart: {plotBackgroundColor: null, plotBorderWidth: 0, plotShadow: false},
-        title: {text: 'Trạng Thái<br>Đơn Hàng<br>2020', align: 'center', verticalAlign: 'middle', y: 60},
+        title: {text: 'Trạng Thái<br>Đơn Hàng', align: 'center', verticalAlign: 'middle', y: 60},
         tooltip: {pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'},
         accessibility: {point: {valueSuffix: '%'}},
         plotOptions: {pie: {dataLabels: {enabled: true, distance: -50, style: {fontWeight: 'bold', color: 'white'}}, startAngle: -90, endAngle: 90, center: ['50%', '75%'], size: '110%'}},
         series: [{type: 'pie',name: 'Browser share', innerSize: '50%', data: [['Đang Chờ', $wt], ['Xác Nhận', $cf], ['Đang Giao', $sh], ['Hoàn Thành', $cp],]}]
     });
 </script>
+
 @yield("script")

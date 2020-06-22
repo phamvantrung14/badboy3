@@ -16,8 +16,13 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $datas = Orders::all();
-        return view("backend.orders.order",compact("datas"));
+        $stwaiting = Orders::where("status",0)->get();
+        $stconfirm = Orders::where("status",1)->get();
+        $stship = Orders::where("status",2)->get();
+        $stconplete = Orders::where("status",3)->get();
+        $stdelete = Orders::where("status",4)->get();
+        $datas = Orders::paginate(15);
+        return view("backend.orders.order",compact("datas","stwaiting","stconfirm","stship","stconplete","stdelete"));
     }
 
     /**
@@ -49,11 +54,11 @@ class OrderController extends Controller
      */
     public function show(Orders $order)
     {
-        //        dd($order->id);
-        $data = Orders::findOrFail($order->__get("id"));
-        $data_detail = Order_detail::where("id_order",$order->__get("id"))->get();
-//        dd($data_detail);
-        return view("backend.orders.order_detail",compact("data","data_detail"));
+//                dd($order->id);
+        $data2 = Orders::findOrFail($order->__get("id"));
+        $data2_detail = Order_detail::where("id_order",$order->__get("id"))->get();
+//        dd($data_detail->all());
+        return view("backend.orders.order_detail",compact("data2","data2_detail"));
 
     }
 
@@ -132,5 +137,31 @@ class OrderController extends Controller
     public function destroy(Orders $orders)
     {
         //
+    }
+
+    public function getDangCho(Request $request)
+    {
+        $datas = Orders::where("status",$request->status)->paginate(15);
+        return view("backend.orders.ajax-order",compact("datas"));
+    }
+    public function getDaXacNhan(Request $request)
+    {
+        $datas = Orders::where("status",$request->status)->paginate(15);
+        return view("backend.orders.ajax-order",compact("datas"));
+    }
+    public function getDangGiao(Request $request)
+    {
+        $datas = Orders::where("status",$request->status)->paginate(15);
+        return view("backend.orders.ajax-order",compact("datas"));
+    }
+    public function getHoanThanh(Request $request)
+    {
+        $datas = Orders::where("status",$request->status)->paginate(15);
+        return view("backend.orders.ajax-order",compact("datas"));
+    }
+    public function getBiHuy(Request $request)
+    {
+        $datas = Orders::where("status",$request->status)->paginate(15);
+        return view("backend.orders.ajax-order",compact("datas"));
     }
 }

@@ -123,6 +123,13 @@ Route::group(["prefix"=>"admin","middleware"=>"admin"],function(){
         Route::post('/timkiem',"ProductController@timkiem")->name("timkiem");
     });
     Route::resource("orders","OrderController");
+    Route::group(["prefix"=>"order"],function (){
+        Route::get('/dangcho','OrderController@getDangCho')->name("orders.dangcho");
+        Route::get('/daxacnhan','OrderController@getDaXacNhan')->name("orders.daxacnhan");
+        Route::get('/danggiao','OrderController@getDangGiao');
+        Route::get('/hoanthanh','OrderController@getHoanThanh');
+        Route::get('/bihuy','OrderController@getBiHuy');
+    });
 
 });
 
